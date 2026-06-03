@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import "./App.css";
 
+import SidebarUI from "./components/SidebarUI";
 import HeaderUI from "./components/HeaderUI";
 
 import Dashboard from "./pages/Dashboard";
@@ -30,13 +31,17 @@ function App() {
   };
 
   return (
-    <div className="app">
-      <HeaderUI
+    <div className="app-layout">
+      <SidebarUI
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
       />
 
-      {renderPage()}
+      <main className="main-content">
+        <HeaderUI />
+
+        {renderPage()}
+      </main>
     </div>
   );
 }

@@ -1,31 +1,15 @@
-interface HeaderUIProps {
-  currentPage: string;
-  setCurrentPage: (page: string) => void;
-}
-
-function HeaderUI({ currentPage, setCurrentPage }: HeaderUIProps) {
-  const pages = [
-    "Dashboard",
-    "Games",
-    "Devices",
-    "Dataset Info",
-  ];
-
+function HeaderUI() {
   return (
-    <header className="header">
-      <h1>🎮 Gaming Battery Analytics</h1>
+    <header className="dashboard-header">
+      <div>
+        <h1>
+          Gaming Battery Analytics Dashboard
+        </h1>
 
-      <nav>
-        {pages.map((page) => (
-          <button
-            key={page}
-            className={currentPage === page ? "active" : ""}
-            onClick={() => setCurrentPage(page)}
-          >
-            {page}
-          </button>
-        ))}
-      </nav>
+        <p>
+          Battery Percentage vs Gaming Sessions
+        </p>
+      </div>
     </header>
   );
 }
