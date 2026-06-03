@@ -9,9 +9,9 @@ function ChartCard({
     <div className="chart-card">
       <h3>{title}</h3>
 
-      <div className="chart-body">
-        Chart will go here
-      </div>
+        <div className="chart-body">
+        📈 Visualization Area
+        </div>
     </div>
   );
 }

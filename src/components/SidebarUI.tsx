@@ -35,6 +35,14 @@ function SidebarUI({
           </button>
         ))}
       </nav>
+
+      <div className="sidebar-footer">
+        <h4>Dataset Stats</h4>
+
+        <p>🎮 Games: 5</p>
+        <p>📱 Devices: 2</p>
+        <p>📊 Records: 1250</p>
+      </div>
     </aside>
   );
 }
