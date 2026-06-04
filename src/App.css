@@ -1,3 +1,15 @@
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  overflow: hidden;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -13,16 +25,22 @@ body {
 
 .app-layout {
   display: flex;
-  min-height: 100vh;
+  height: 100vh;
+  width: 100vw;
 }
 
 /* SIDEBAR */
 
 .sidebar {
-  width: 240px;
+  width: 180px;
+
   background: #0f172a;
   color: white;
-  padding: 24px;
+
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
 }
 
 .sidebar-logo {
@@ -83,16 +101,25 @@ body {
 
 .main-content {
   flex: 1;
-  padding: 25px;
+
+  padding: 16px;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
 }
 
 /* HEADER */
 
 .dashboard-header {
   background: white;
-  padding: 24px;
+
+  padding: 14px 20px;
+
   border-radius: 12px;
-  margin-bottom: 20px;
+
+  margin-bottom: 12px;
 
   box-shadow: 0 2px 10px rgba(0,0,0,.05);
 }
@@ -130,8 +157,16 @@ body {
 /* DASHBOARD */
 
 .dashboard-layout {
-  display: flex;
-  gap: 20px;
+  display: grid;
+
+  grid-template-columns:
+    1fr 240px;
+
+  gap: 16px;
+
+  flex: 1;
+
+  overflow: hidden;
 }
 
 .dashboard-content {
@@ -212,7 +247,7 @@ body {
 }
 
 .kpi-card p {
-  font-size: 2.8rem;
+  font-size: 2 rem;
   font-weight: 700;
   color: #0f172a;
 }
@@ -222,23 +257,27 @@ body {
 .charts-grid {
   display: grid;
 
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns:
+    repeat(2, 1fr);
 
-  gap: 20px;
+  grid-template-rows:
+    repeat(2, 1fr);
+
+  gap: 16px;
+
+  height: 100%;
 }
 
 .chart-card {
+  height: 220px;
+
   background: white;
 
   border-radius: 12px;
 
-  padding: 20px;
-
-  min-height: 320px;
+  padding: 15px;
 
   box-shadow: 0 2px 10px rgba(0,0,0,.05);
-
-  transition: 0.25s ease;
 }
 
 .chart-card:hover {
@@ -302,4 +341,22 @@ body {
   .kpi-grid {
     grid-template-columns: 1fr;
   }
+}
+
+
+/* Alerts */
+.alert-container {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 10px;
+
+  margin-bottom: 12px;
+}
+
+.alert-card {
+  padding: 10px;
+  font-size: 0.9rem;
 }

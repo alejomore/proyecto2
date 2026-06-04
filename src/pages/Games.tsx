@@ -1,18 +1,18 @@
+import ChartCard from "../components/ChartCard";
+
 function Games() {
   return (
     <div className="page-container">
       <h2>🎮 Games Analysis</h2>
 
-      <div className="chart-placeholder">
-        Top Battery Consuming Games
-      </div>
+      <div className="charts-grid">
+        <ChartCard title="Battery Consumption Ranking" />
 
-      <div className="chart-placeholder">
-        Average Session Time per Game
-      </div>
+        <ChartCard title="Average Session Time per Game" />
 
-      <div className="chart-placeholder">
-        Battery Consumption Ranking
+        <ChartCard title="Most Efficient Games" />
+
+        <ChartCard title="FPS Distribution by Game" />
       </div>
     </div>
   );
