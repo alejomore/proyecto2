@@ -44,7 +44,7 @@ export const ChartCard = ({ title, data }: ChartCardProps) => {
 
   <ResponsiveContainer
     width="100%"
-    height={300}
+    height="90%"
   >
     <LineChart data={groupedData}>
 
