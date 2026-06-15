@@ -1,8 +1,22 @@
-function AlertUI() {
+type AlertUIProps = {
+  data: Array<{
+    Game_Name: string;
+    "Battery_Drop_%": number;
+  }>;
+};
+
+function AlertUI({ data }: AlertUIProps) {
+  const highestBatteryGame = data.length
+    ? [...data].sort(
+        (a, b) => b["Battery_Drop_%"] - a["Battery_Drop_%"]
+      )[0]
+    : null;
+  
   return (
     <div className="alert-container">
       <div className="alert-card">
-        ⚠ PUBG Mobile consumes more battery than average
+          ⚠ Highest battery usage:
+          {highestBatteryGame ? highestBatteryGame.Game_Name : 'N/A'}
       </div>
 
       <div className="alert-card">

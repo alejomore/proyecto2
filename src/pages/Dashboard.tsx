@@ -1,11 +1,13 @@
 import AlertUI from "../components/AlertUI";
 import KPIcard from "../components/KPIcard";
-import ChartCard from "../components/ChartCard";
+import { ChartCard } from "../components/ChartCard";
 import FilterPanel from "../components/FilterPanel";
 import useFetchData from "../hooks/userFetchData";
 import GamingTable from "../components/GamingTable";
+import InsightsCard from "../components/InsightsCard";
 
 function Dashboard() {
+  
   const data = useFetchData();
   if (!data) {
     return <p>Loading...</p>;
@@ -28,7 +30,7 @@ function Dashboard() {
   const totalSessions = data.length;
   return (
     <>
-      <AlertUI />
+      <AlertUI data={[]} />
     
       <div className="dashboard-layout">
         <div className="dashboard-content">
@@ -52,17 +54,24 @@ function Dashboard() {
               title="Total Sessions"
               value={totalSessions.toString()}
             />
-          <GamingTable data={data} />
           </div>
 
-          <div className="charts-grid">
-            <ChartCard title="Battery Consumption by Game" />
-            <ChartCard title="Battery Drop Distribution" />
-            <ChartCard title="FPS vs Battery Consumption" />
-            <ChartCard title="Session Time vs Battery Consumption" />
-            <ChartCard title="Android vs iOS Consumption" />
-            <ChartCard title="Sessions by Device Type" />
+          <div className="main-dashboard-grid">
+
+            <ChartCard
+              title="Battery Consumption by Game"
+              data={data}
+            />
+
+            <GamingTable
+              data={data}
+            />
+
           </div>
+
+          <InsightsCard
+             data={data}
+            />
         </div>
 
         <FilterPanel />

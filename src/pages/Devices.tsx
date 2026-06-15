@@ -1,4 +1,4 @@
-import ChartCard from "../components/ChartCard";
+import { ChartCard } from "../components/ChartCard";
 
 function Devices() {
   return (
@@ -6,13 +6,13 @@ function Devices() {
       <h2>📱 Device Analysis</h2>
 
       <div className="charts-grid">
-        <ChartCard title="Android vs iOS Consumption" />
+        <ChartCard title="Android vs iOS Consumption" data={[]} />
 
-        <ChartCard title="Sessions by Device Type" />
+        <ChartCard title="Sessions by Device Type" data={[]} />
 
-        <ChartCard title="FPS Comparison" />
+        <ChartCard title="FPS Comparison" data={[]} />
 
-        <ChartCard title="Battery Efficiency by Device" />
+        <ChartCard title="Battery Efficiency by Device" data={[]} />
       </div>
     </div>
   );

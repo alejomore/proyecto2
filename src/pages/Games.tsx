@@ -1,4 +1,4 @@
-import ChartCard from "../components/ChartCard";
+import { ChartCard } from "../components/ChartCard";
 
 function Games() {
   return (
@@ -6,13 +6,13 @@ function Games() {
       <h2>🎮 Games Analysis</h2>
 
       <div className="charts-grid">
-        <ChartCard title="Battery Consumption Ranking" />
+        <ChartCard title="Battery Consumption Ranking" data={[]} />
 
-        <ChartCard title="Average Session Time per Game" />
+        <ChartCard title="Average Session Time per Game" data={[]} />
 
-        <ChartCard title="Most Efficient Games" />
+        <ChartCard title="Most Efficient Games" data={[]} />
 
-        <ChartCard title="FPS Distribution by Game" />
+        <ChartCard title="FPS Distribution by Game" data={[]} />
       </div>
     </div>
   );

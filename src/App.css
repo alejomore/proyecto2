@@ -356,3 +356,19 @@ body {
   padding: 10px;
   font-size: 0.9rem;
 }
+
+/* Table */ 
+.table-container {
+  max-height: 350px;
+  overflow-y: auto;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+}
