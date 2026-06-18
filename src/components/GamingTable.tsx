@@ -21,6 +21,14 @@ function GamingTable({
     (page - 1) * ITEMS_PER_PAGE,
     page * ITEMS_PER_PAGE
   );
+  if (!data.length) {
+  return (
+    <div className="table-container">
+      <h3>Gaming Sessions</h3>
+      <p>No data available.</p>
+    </div>
+  );
+}
 
   return (
     <div className="table-container">

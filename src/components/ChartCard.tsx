@@ -37,7 +37,14 @@ export const ChartCard = ({ title, data }: ChartCardProps) => {
     game: item.game,
     battery: item.battery / item.count,
   }));
-
+if (!data.length) {
+  return (
+    <div className="chart-card">
+      <h3>{title}</h3>
+      <p>No data available.</p>
+    </div>
+  );
+}
   return (
     <div className="chart-card">
       <h3>{title}</h3>

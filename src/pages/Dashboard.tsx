@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import AlertUI from "../components/AlertUI";
 import KPIcard from "../components/KPIcard";
 import { ChartCard } from "../components/ChartCard";
@@ -9,33 +11,61 @@ import InsightsCard from "../components/InsightsCard";
 function Dashboard() {
   const data = useFetchData();
 
-  if (!data) {
+const [selectedGame, setSelectedGame] =
+  useState("All");
+
+const [selectedDevice, setSelectedDevice] =
+  useState("All");
+
+    if (!data) {
     return <p>Loading...</p>;
   }
 
-  const avgFPS =
-    data.reduce(
-      (sum, item) => sum + item.FPS,
-      0
-    ) / data.length;
+const filteredData = data.filter((item) => {
 
-  const avgBatteryDrop =
-    data.reduce(
-      (sum, item) => sum + item["Battery_Drop_%"],
-      0
-    ) / data.length;
+  const gameMatch =
+    selectedGame === "All" ||
+    item.Game_Name === selectedGame;
 
-  const avgSessionTime =
-    data.reduce(
-      (sum, item) => sum + item.Session_Time_Minutes,
-      0
-    ) / data.length;
+  const deviceMatch =
+    selectedDevice === "All" ||
+    item.Device_Type === selectedDevice;
 
-  const totalSessions = data.length;
+  return gameMatch && deviceMatch;
+});
+
+const avgFPS =
+  filteredData.length > 0
+    ? filteredData.reduce(
+        (sum, item) => sum + item.FPS,
+        0
+      ) / filteredData.length
+    : 0;
+
+const avgBatteryDrop =
+  filteredData.length > 0
+    ? filteredData.reduce(
+        (sum, item) =>
+          sum + item["Battery_Drop_%"],
+        0
+      ) / filteredData.length
+    : 0;
+
+const avgSessionTime =
+  filteredData.length > 0
+    ? filteredData.reduce(
+        (sum, item) =>
+          sum + item.Session_Time_Minutes,
+        0
+      ) / filteredData.length
+    : 0;
+
+const totalSessions =
+  filteredData.length;
 
   return (
     <>
-      <AlertUI data={data} />
+      <AlertUI data={filteredData} />
 
       <div className="dashboard-content">
 
@@ -63,23 +93,29 @@ function Dashboard() {
 
         </div>
 
-        <FilterPanel />
+          <FilterPanel
+            data={data}
+            selectedGame={selectedGame}
+            selectedDevice={selectedDevice}
+            onGameChange={setSelectedGame}
+            onDeviceChange={setSelectedDevice}
+          />
 
         <div className="main-dashboard-grid">
 
           <ChartCard
             title="Battery Consumption by Game"
-            data={data}
+            data={filteredData}
           />
 
           <GamingTable
-            data={data}
+            data={filteredData}
           />
 
         </div>
 
         <InsightsCard
-          data={data}
+          data={filteredData}
         />
 
       </div>

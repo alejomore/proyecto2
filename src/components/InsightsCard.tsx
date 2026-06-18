@@ -44,11 +44,19 @@ function InsightsCard({
         {" "}
         ({highestFPS.FPS} FPS)
       </p>
-
       <p>
-        📱 Device:
+        ⏱ Longest Session:
         {" "}
-        {highestBatteryUsage.Device_Type}
+        {
+          Math.max(
+            ...data.map(
+              item =>
+                item.Session_Time_Minutes
+            )
+          )
+        }
+        {" "}
+        minutes
       </p>
 
     </div>
