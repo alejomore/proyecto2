@@ -1,43 +1,54 @@
 import type { Root2 } from "../types/DashboardTypes";
 
-interface InsightsProps {
+interface InsightsCardProps {
   data: Root2[];
 }
 
 function InsightsCard({
   data,
-}: InsightsProps) {
+}: InsightsCardProps) {
 
-  const maxBatteryGame =
-    [...data].sort(
-      (a, b) =>
-        b["Battery_Drop_%"] -
-        a["Battery_Drop_%"]
-    )[0];
+  if (!data.length) {
+    return null;
+  }
+
+  const highestBatteryUsage = [...data].sort(
+    (a, b) =>
+      b["Battery_Drop_%"] -
+      a["Battery_Drop_%"]
+  )[0];
+
+  const highestFPS = [...data].sort(
+    (a, b) =>
+      b.FPS -
+      a.FPS
+  )[0];
 
   return (
     <div className="insights-card">
 
-      <h3>
-        Dataset Insights
-      </h3>
+      <h3>Dataset Insights</h3>
 
       <p>
-        🔋 Highest battery drop:
+        🔋 Highest battery usage:
         {" "}
-        {maxBatteryGame.Game_Name}
+        {highestBatteryUsage.Game_Name}
+        {" "}
+        ({highestBatteryUsage["Battery_Drop_%"]}%)
+      </p>
+
+      <p>
+        🚀 Highest FPS:
+        {" "}
+        {highestFPS.Game_Name}
+        {" "}
+        ({highestFPS.FPS} FPS)
       </p>
 
       <p>
         📱 Device:
         {" "}
-        {maxBatteryGame.Device_Type}
-      </p>
-
-      <p>
-        🎮 FPS:
-        {" "}
-        {maxBatteryGame.FPS}
+        {highestBatteryUsage.Device_Type}
       </p>
 
     </div>

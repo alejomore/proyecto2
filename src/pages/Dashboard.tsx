@@ -7,74 +7,81 @@ import GamingTable from "../components/GamingTable";
 import InsightsCard from "../components/InsightsCard";
 
 function Dashboard() {
-  
   const data = useFetchData();
+
   if (!data) {
     return <p>Loading...</p>;
   }
+
   const avgFPS =
-  data.reduce(
-    (sum, item) => sum + item.FPS,
-    0
-  ) / data.length;
+    data.reduce(
+      (sum, item) => sum + item.FPS,
+      0
+    ) / data.length;
+
   const avgBatteryDrop =
-  data.reduce(
-    (sum, item) => sum + item["Battery_Drop_%"],
-    0
-  ) / data.length;
+    data.reduce(
+      (sum, item) => sum + item["Battery_Drop_%"],
+      0
+    ) / data.length;
+
   const avgSessionTime =
-  data.reduce(
-    (sum, item) => sum + item.Session_Time_Minutes,
-    0
-  ) / data.length;
+    data.reduce(
+      (sum, item) => sum + item.Session_Time_Minutes,
+      0
+    ) / data.length;
+
   const totalSessions = data.length;
+
   return (
     <>
-      <AlertUI data={[]} />
-    
-      <div className="dashboard-layout">
-        <div className="dashboard-content">
-          <div className="kpi-grid">
-            <KPIcard
-              title="Avg Battery Drop"
-              value={`${avgBatteryDrop.toFixed(1)}%`}
-            />
+      <AlertUI data={data} />
 
-            <KPIcard
-              title="Avg FPS"
-              value={avgFPS.toFixed(0)}
-            />
+      <div className="dashboard-content">
 
-            <KPIcard
-              title="Avg Session Time"
-              value={`${avgSessionTime.toFixed(0)} min`}
-            />
+        <div className="kpi-grid">
 
-            <KPIcard
-              title="Total Sessions"
-              value={totalSessions.toString()}
-            />
-          </div>
+          <KPIcard
+            title="Avg Battery Drop"
+            value={`${avgBatteryDrop.toFixed(1)}%`}
+          />
 
-          <div className="main-dashboard-grid">
+          <KPIcard
+            title="Avg FPS"
+            value={avgFPS.toFixed(0)}
+          />
 
-            <ChartCard
-              title="Battery Consumption by Game"
-              data={data}
-            />
+          <KPIcard
+            title="Avg Session Time"
+            value={`${avgSessionTime.toFixed(0)} min`}
+          />
 
-            <GamingTable
-              data={data}
-            />
+          <KPIcard
+            title="Total Sessions"
+            value={totalSessions.toString()}
+          />
 
-          </div>
-
-          <InsightsCard
-             data={data}
-            />
         </div>
 
         <FilterPanel />
+
+        <div className="main-dashboard-grid">
+
+          <ChartCard
+            title="Battery Consumption by Game"
+            data={data}
+          />
+
+          <GamingTable
+            data={data}
+          />
+
+        </div>
+
+        <InsightsCard
+          data={data}
+        />
+
       </div>
     </>
   );

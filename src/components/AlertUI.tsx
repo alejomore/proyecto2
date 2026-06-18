@@ -1,31 +1,55 @@
-type AlertUIProps = {
-  data: Array<{
-    Game_Name: string;
-    "Battery_Drop_%": number;
-  }>;
-};
+import type { Root2 } from "../types/DashboardTypes";
 
-function AlertUI({ data }: AlertUIProps) {
-  const highestBatteryGame = data.length
-    ? [...data].sort(
-        (a, b) => b["Battery_Drop_%"] - a["Battery_Drop_%"]
-      )[0]
-    : null;
-  
+interface AlertUIProps {
+  data: Root2[];
+}
+
+function AlertUI({
+  data,
+}: AlertUIProps) {
+
+  if (!data.length) {
+    return null;
+  }
+
+  const highestBatteryUsage = [...data].sort(
+    (a, b) =>
+      b["Battery_Drop_%"] -
+      a["Battery_Drop_%"]
+  )[0];
+
+  const avgBatteryDrop =
+    data.reduce(
+      (sum, item) =>
+        sum + item["Battery_Drop_%"],
+      0
+    ) / data.length;
+
   return (
     <div className="alert-container">
+
       <div className="alert-card">
-          ⚠ Highest battery usage:
-          {highestBatteryGame ? highestBatteryGame.Game_Name : 'N/A'}
+        ⚠ Highest battery usage:
+        {" "}
+        {highestBatteryUsage.Game_Name}
       </div>
 
       <div className="alert-card">
-        📱 Android sessions dominate the dataset
+        📱 Devices analyzed:
+        {" "}
+        {new Set(
+          data.map(
+            item => item.Device_Type
+          )
+        ).size}
       </div>
 
       <div className="alert-card">
-        🔋 Average battery drop: 21%
+        🔋 Average battery drop:
+        {" "}
+        {avgBatteryDrop.toFixed(1)}%
       </div>
+
     </div>
   );
 }

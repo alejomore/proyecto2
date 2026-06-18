@@ -1,7 +1,6 @@
 function FilterPanel() {
   return (
     <div className="filter-panel">
-      <h3>Filters</h3>
 
       <div className="filter-group">
         <label>Game</label>
@@ -20,7 +19,7 @@ function FilterPanel() {
       </div>
 
       <div className="filter-group">
-        <label>FPS Range</label>
+        <label>FPS</label>
 
         <input
           type="range"
@@ -38,6 +37,7 @@ function FilterPanel() {
           max="120"
         />
       </div>
+
     </div>
   );
 }
