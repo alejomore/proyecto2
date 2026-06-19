@@ -29,13 +29,13 @@ function AlertUI({
     <div className="alert-container">
 
       <div className="alert-card">
-        ⚠ Highest battery usage:
+        Highest battery usage:
         {" "}
         {highestBatteryUsage.Game_Name}
       </div>
 
       <div className="alert-card">
-        📱 Devices analyzed:
+        Devices analyzed:
         {" "}
         {new Set(
           data.map(
@@ -45,7 +45,7 @@ function AlertUI({
       </div>
 
       <div className="alert-card">
-        🔋 Average battery drop:
+        Average battery drop:
         {" "}
         {avgBatteryDrop.toFixed(1)}%
       </div>

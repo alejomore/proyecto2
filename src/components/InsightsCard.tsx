@@ -30,7 +30,7 @@ function InsightsCard({
       <h3>Dataset Insights</h3>
 
       <p>
-        🔋 Highest battery usage:
+        Highest battery usage:
         {" "}
         {highestBatteryUsage.Game_Name}
         {" "}
@@ -38,14 +38,14 @@ function InsightsCard({
       </p>
 
       <p>
-        🚀 Highest FPS:
+        Highest FPS:
         {" "}
         {highestFPS.Game_Name}
         {" "}
         ({highestFPS.FPS} FPS)
       </p>
       <p>
-        ⏱ Longest Session:
+        Longest Session:
         {" "}
         {
           Math.max(

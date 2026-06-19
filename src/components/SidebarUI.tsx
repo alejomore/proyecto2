@@ -17,7 +17,7 @@ function SidebarUI({
   return (
     <aside className="sidebar">
       <div className="sidebar-logo">
-        🎮 Analytics
+        Analytics
       </div>
 
       <nav className="sidebar-nav">
@@ -39,9 +39,9 @@ function SidebarUI({
       <div className="sidebar-footer">
         <h4>Dataset Stats</h4>
 
-        <p>🎮 Games: 5</p>
-        <p>📱 Devices: 2</p>
-        <p>📊 Records: 1250</p>
+        <p> Games: 5</p>
+        <p> Devices: 2</p>
+        <p> Records: 1250</p>
       </div>
     </aside>
   );

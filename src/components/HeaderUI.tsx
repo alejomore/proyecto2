@@ -1,7 +1,7 @@
 function HeaderUI() {
   return (
     <header className="dashboard-header">
-      <h1>🎮 Gaming Battery Analytics Dashboard</h1>
+      <h1>Gaming Battery Analytics Dashboard</h1>
 
       <p>
         Analyze battery consumption across gaming sessions,

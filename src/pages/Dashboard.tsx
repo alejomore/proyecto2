@@ -7,6 +7,7 @@ import FilterPanel from "../components/FilterPanel";
 import useFetchData from "../hooks/userFetchData";
 import GamingTable from "../components/GamingTable";
 import InsightsCard from "../components/InsightsCard";
+import AnalyticsChart from "../components/AnalyticsChart";
 
 function Dashboard() {
   const data = useFetchData();
@@ -103,9 +104,12 @@ const totalSessions =
 
         <div className="main-dashboard-grid">
 
-          <ChartCard
+          <AnalyticsChart
             title="Battery Consumption by Game"
             data={filteredData}
+            groupBy="Game_Name"
+            metric="Battery_Drop_%"
+            layout="vertical"
           />
 
           <GamingTable
