@@ -2,7 +2,6 @@ import { useState } from "react";
 
 import AlertUI from "../components/AlertUI";
 import KPIcard from "../components/KPIcard";
-import { ChartCard } from "../components/ChartCard";
 import FilterPanel from "../components/FilterPanel";
 import useFetchData from "../hooks/userFetchData";
 import GamingTable from "../components/GamingTable";
